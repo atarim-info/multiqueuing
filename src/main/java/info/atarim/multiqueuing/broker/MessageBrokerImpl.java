@@ -1,11 +1,16 @@
 package info.atarim.multiqueuing.broker;
 
-import info.atarim.multiqueuing.concurrent.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import info.atarim.multiqueuing.concurrent.ThreadPool;
 import info.atarim.multiqueuing.exceptions.ConsumerAlreadyExistsException;
 import info.atarim.multiqueuing.exceptions.QueueAlreadyExistsException;
 import info.atarim.multiqueuing.exceptions.QueueNotExistsException;
 
 public class MessageBrokerImpl<T> implements MessageBroker<T> {
+	private static final Logger LOG = LoggerFactory.getLogger(MessageBrokerImpl.class );
+	
 	private ThreadPool threadPool;
 	private QueueManager<T> queueManager;
 

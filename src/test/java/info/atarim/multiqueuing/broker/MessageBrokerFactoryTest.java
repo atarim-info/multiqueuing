@@ -23,7 +23,7 @@ import info.atarim.multiqueuing.exceptions.QueueNotExistsException;
  *
  */
 class MessageBrokerFactoryTest {
-	private static final Logger LOG = LoggerFactory.getLogger(QueueManagerImpl.class );
+	private static final Logger LOG = LoggerFactory.getLogger(MessageBrokerFactoryTest.class );
 
 	private static final String ALICE_QUEUE = "ALICE_QUEUE";
 	private static final String BOB_QUEUE = "BOB_QUEUE";
@@ -50,8 +50,8 @@ class MessageBrokerFactoryTest {
 		messageBroker.createQueue(ALICE_QUEUE);
 		messageBroker.createQueue(BOB_QUEUE);
 		
-		Thread alice = createRunnable(messageBroker, aliceData, ALICE_QUEUE, 1000, 60000, 1);
-		Thread bob = createRunnable(messageBroker, bobData, BOB_QUEUE, 5, 5000, 12);
+		Thread alice = createPublisherThread(messageBroker, aliceData, ALICE_QUEUE, 1000, 60000, 1);
+		Thread bob = createPublisherThread(messageBroker, bobData, BOB_QUEUE, 5, 5000, 12);
 		
 		CountDownLatch aliceCountDownLatch = createConsumer(messageBroker, ALICE_QUEUE, 1000);
 		CountDownLatch bobCountDownLatch = createConsumer(messageBroker, BOB_QUEUE, 5*12);
@@ -103,7 +103,7 @@ class MessageBrokerFactoryTest {
 	}
 	
 	/**
-	 * createRunnable
+	 * createPublisherThread
 	 * @param messageBroker
 	 * @param userData
 	 * @param queueName
@@ -112,7 +112,7 @@ class MessageBrokerFactoryTest {
 	 * @param repeatTimes
 	 * @return
 	 */
-	private Thread createRunnable(MessageBroker<String> messageBroker, UserData<String> userData, String queueName, int messageCont, long sleepTime, int repeatTimes) {
+	private Thread createPublisherThread(MessageBroker<String> messageBroker, UserData<String> userData, String queueName, int messageCont, long sleepTime, int repeatTimes) {
 		Thread thread = new Thread(new Runnable() {
 			@Override
 			public void run() {
