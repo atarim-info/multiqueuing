@@ -128,7 +128,7 @@ public class MultiQueuingApp {
 					
 					if (t > 1) {
 						long time2sleep = sleepTime - duration;
-						LOG.debug("Consumer QUEUE: " + queueName + " going to sleep " + time2sleep + " miliseconds");
+						LOG.debug("Publisher to QUEUE: " + queueName + " going to sleep " + time2sleep + " miliseconds");
 						try {
 							Thread.sleep(time2sleep);
 						} catch (InterruptedException e) {
