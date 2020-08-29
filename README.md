@@ -29,15 +29,15 @@ Class Diagram
 Alogorithm
 -------------------	
 1. Create Message Broker
-* Create Thread Pool 
-* Queue Manager
-* Start the Message Broker (Start Queue watch thread)
-* Create Queues (Restriction: Unique Queue Name - no Queues with the same name)
-* Subscribe Consumers for the Messages in Queue (Restriction: One consumer per Queue)
-* Publish Messages in parallel the separate threads
-* Wait until all the messages sent
-* Wait until all the messages received
-* Stop the Message Broker
+2. Create Thread Pool 
+3. Queue Manager
+4. Start the Message Broker (Start Queue watch thread)
+5. Create Queues (Restriction: Unique Queue Name - no Queues with the same name)
+6. Subscribe Consumers for the Messages in Queue (Restriction: One consumer per Queue)
+7. Publish Messages in parallel the separate threads
+8. Wait until all the messages sent
+9. Wait until all the messages received
+10. Stop the Message Broker
 
 To run the application:
 -------------------	
